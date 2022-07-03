@@ -14,7 +14,7 @@ class scoreboard extends uvm_scoreboard;
 	bit[`LENGTH-1:0] act_pattern;
 	bit exp_out;
 
-	uvm_analysis_imp #(Item, scoreboard) m_analysis_imp;
+	uvm_analysis_imp#(Item, scoreboard) m_analysis_imp;
 
 	virtual function void build_phase(uvm_phase phase);
 		super.build_phase(phase);

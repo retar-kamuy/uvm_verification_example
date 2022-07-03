@@ -18,12 +18,12 @@ class base_test extends uvm_test;
 
 		// Get virtual IF handle from top level and pass it to everything
 		// in env level
-		if (!uvm_config_db #(virtual des_if)::get(this, "", "des_vif", vif))
+		if (!uvm_config_db#(virtual des_if)::get(this, "", "des_vif", vif))
 			`uvm_fatal("TEST", "Did not get vif")
-		uvm_config_db #(virtual des_if)::set(this, "e0.a0.*", "des_vif", vif);
+		uvm_config_db#(virtual des_if)::set(this, "e0.a0.*", "des_vif", vif);
 
 		// Setup pattern queue and place into config db
-		uvm_config_db #(bit[`LENGTH-1:0])::set(this, "*", "ref_pattern", pattern);
+		uvm_config_db#(bit[`LENGTH-1:0])::set(this, "*", "ref_pattern", pattern);
 
 		// Create sequence and randomize it
 		seq = gen_item_seq::type_id::create("seq");

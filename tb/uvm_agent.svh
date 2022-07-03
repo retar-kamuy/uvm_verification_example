@@ -8,7 +8,7 @@ class agent extends uvm_agent;
 	
 	driver d0;		// Driver handle
 	monitor m0;		// Monitor handle
-	uvm_sequencer #(Item) s0;		// Sequencer Handle
+	uvm_sequencer#(Item) s0;		// Sequencer Handle
 	virtual function void build_phase(uvm_phase phase);
 		super.build_phase(phase);
 		s0 = uvm_sequencer#(Item)::type_id::create("s0", this);

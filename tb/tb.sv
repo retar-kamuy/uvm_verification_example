@@ -1,4 +1,11 @@
+`include "uvm_macros.svh"
+`include "defines.svh"
+`include "prj_pkg.svh"
+
 module tb;
+	import uvm_pkg::*;
+	import prj_pkg::*;
+
 	reg clk;
 
 	always #10 clk =~ clk;

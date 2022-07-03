@@ -1,0 +1,60 @@
+# vsim "+incdir+/home/rocky/Repositories/uvm_verification_example/src" "+incdir+/home/rocky/Repositories/uvm_verification_example/tb" "+incdir+/home/rocky/Repositories/uvm_verification_example/tb" tb -c -do "add wave -r /*; run -all; quit" -l vsim.log 
+# Start time: 18:22:18 on Jul 03,2022
+# Loading /tmp/rocky@ThinkPad-X220_dpi_12390/linuxaloem_gcc-7.4.0/export_tramp.so
+# ** Note: (vsim-8785) UVM-aware debugging capabilities will be disabled since no compiled "questa_uvm_pkg" can be found.
+# This also means that later if you turn on UVM-aware debugging your debug simulations may have
+# different random seeds from your non-debug simulations.
+# Loading sv_std.std
+# Loading work.des_if
+# Loading work.uvm_pkg
+# Loading work.prj_pkg
+# Loading work.tb
+# Loading work.det_1011
+# ** Warning: (vsim-3764) Stand-alone call to function 'write' treated as implicit void cast.
+#    Time: 0 ps  Iteration: 0  Region: /uvm_pkg::uvm_analysis_imp #(prj_pkg::Item, prj_pkg::scoreboard) File: /opt/intelFPGA/20.1/modelsim_ase/verilog_src/uvm-1.2/src/tlm1/uvm_analysis_port.svh Line: 114
+# Compiling /tmp/rocky@ThinkPad-X220_dpi_12390/linuxaloem_gcc-7.4.0/exportwrapper.c
+# Loading /tmp/rocky@ThinkPad-X220_dpi_12390/linuxaloem_gcc-7.4.0/vsim_auto_compile.so
+# ** Warning: Design size of 54080 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# add wave -r /*
+#  run -all
+# UVM_INFO /opt/intelFPGA/20.1/modelsim_ase/verilog_src/uvm-1.2/src/base/uvm_root.svh(392) @ 0: reporter [UVM/RELNOTES] 
+# ----------------------------------------------------------------
+# UVM-1.2
+# (C) 2007-2014 Mentor Graphics Corporation
+# (C) 2007-2014 Cadence Design Systems, Inc.
+# (C) 2006-2014 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# (C) 2013-2014 NVIDIA Corporation
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO @ 0: reporter [RNTST] Running test test_1011...
+# ** Fatal: (vsim-7099) Unable to check out a verification license for the randomize() feature.
+#    Time: 0 ps  Iteration: 10  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#2213_f6c5c9b File: /home/rocky/Repositories/uvm_verification_example/tb/uvm_test.svh Line: 30
+# Fatal error in Function prj_pkg/base_test::build_phase at /home/rocky/Repositories/uvm_verification_example/tb/uvm_test.svh line 30
+# 
+# HDL call sequence:
+# Stopped at /home/rocky/Repositories/uvm_verification_example/tb/uvm_test.svh 30 Function prj_pkg/base_test::build_phase
+# called from  /home/rocky/Repositories/uvm_verification_example/tb/uvm_test.svh 58 Function prj_pkg/test_1011::build_phase
+# called from  /opt/intelFPGA/20.1/modelsim_ase/verilog_src/uvm-1.2/src/base/uvm_common_phases.svh 65 Function uvm_pkg/uvm_build_phase::exec_func
+# called from  /opt/intelFPGA/20.1/modelsim_ase/verilog_src/uvm-1.2/src/base/uvm_topdown_phase.svh 111 Function uvm_pkg/uvm_topdown_phase::execute
+# called from  /opt/intelFPGA/20.1/modelsim_ase/verilog_src/uvm-1.2/src/base/uvm_topdown_phase.svh 78 Function uvm_pkg/uvm_topdown_phase::traverse
+# called from  /opt/intelFPGA/20.1/modelsim_ase/verilog_src/uvm-1.2/src/base/uvm_topdown_phase.svh 95 Function uvm_pkg/uvm_topdown_phase::traverse
+# called from  /opt/intelFPGA/20.1/modelsim_ase/verilog_src/uvm-1.2/src/base/uvm_phase.svh 1390 Task uvm_pkg/uvm_phase::execute_phase
+# called from  /opt/intelFPGA/20.1/modelsim_ase/verilog_src/uvm-1.2/src/base/uvm_phase.svh 2213 Task uvm_pkg/uvm_phase::m_run_phases
+# 
+#  quit
+# End time: 18:22:20 on Jul 03,2022, Elapsed time: 0:00:02
+# Errors: 1, Warnings: 2
