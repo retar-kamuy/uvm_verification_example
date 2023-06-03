@@ -4,23 +4,23 @@
 // into a packet and sends it to the scoreboard
 // using another mailbox.
 class monitor extends uvm_monitor;
+	uvm_analysis_port #(Item) mon_analysis_port;
+	virtual des_if vif;
+
 	`uvm_component_utils(monitor)
-	function new(string name="monitor", uvm_component parent=null);
+
+	function new(string name, uvm_component parent);
 		super.new(name, parent);
 	endfunction
 
-	uvm_analysis_port#(Item) mon_analysis_port;
-	virtual des_if vif;
-
-	virtual function void build_phase(uvm_phase phase);
+	function void build_phase(uvm_phase phase);
 		super.build_phase(phase);
 		if (!uvm_config_db#(virtual des_if)::get(this, "", "des_vif", vif))
-			`uvm_fatal("MON", "Could not get vif")
+			 `uvm_fatal("NOVIF",{"virtual interface must be set for: ",get_full_name(),".vif"});
 		mon_analysis_port = new ("mon_analysis_port", this);
 	endfunction
 
 	virtual task run_phase(uvm_phase phase);
-		super.run_phase(phase);
 		// This task monitors the interface for a complete 
 		// transaction and writes into analysis port when complete
 		forever begin

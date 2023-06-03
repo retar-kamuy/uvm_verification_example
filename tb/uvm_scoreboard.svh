@@ -5,18 +5,19 @@
 // that "out" remains zero, and if the design found the pattern,
 // "out" is set to the correct value.
 class scoreboard extends uvm_scoreboard;
-	`uvm_component_utils(scoreboard)
-	function new(string name="scoreboard", uvm_component parent=null);
-		super.new(name, parent);
-	endfunction
-
 	bit[`LENGTH-1:0] ref_pattern;
 	bit[`LENGTH-1:0] act_pattern;
 	bit exp_out;
 
-	uvm_analysis_imp#(Item, scoreboard) m_analysis_imp;
+	uvm_analysis_imp #(Item, scoreboard) m_analysis_imp;
 
-	virtual function void build_phase(uvm_phase phase);
+	`uvm_component_utils(scoreboard)
+
+	function new(string name, uvm_component parent);
+		super.new(name, parent);
+	endfunction
+
+	function void build_phase(uvm_phase phase);
 		super.build_phase(phase);
 
 		m_analysis_imp = new("m_analysis_imp", this);
@@ -24,7 +25,7 @@ class scoreboard extends uvm_scoreboard;
 			`uvm_fatal("SCBD", "Did not get ref_pattern !")
 	endfunction
 
-	virtual function write(Item item);
+	function write(Item item);
 		act_pattern = act_pattern << 1 | item.in;
 	
 		`uvm_info("SCBD", $sformatf("in=%0d out=%0d ref=0b%0b act=0b%0b", item.in, item.out, ref_pattern, act_pattern), UVM_LOW)

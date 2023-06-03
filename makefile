@@ -22,5 +22,10 @@ TB : RTL
 SIM : TB
 	vsim ${RTL_INC} ${TB_INC} ${ENV_INC} tb -c -do "add wave -r /*; run -all; quit" -l vsim.log
 
+test:
+	xvlog -sv ./src/det_1011_v1.0.sv ./tb/tb.sv -L uvm --include ./tb
+	xelab tb -L uvm -timescale 1ns/1ps
+	xsim tb -R
+
 clean:
 	rm -rf work vlib.log vlog.log vsim.log vsim.wlf

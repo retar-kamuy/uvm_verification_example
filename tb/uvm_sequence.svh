@@ -1,10 +1,11 @@
 class gen_item_seq extends uvm_sequence;
+	rand int num;	// Config total number of items to be sent
+
 	`uvm_object_utils(gen_item_seq)
-	function new(string name="gen_item_seq");
+
+	function new(string name = "gen_item_seq");
 		super.new(name);
 	endfunction
-
-	rand int num;	// Config total number of items to be sent
 
 	constraint c1 { soft num inside {[10:50]}; }
 

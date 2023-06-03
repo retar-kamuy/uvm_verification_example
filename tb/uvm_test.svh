@@ -1,16 +1,17 @@
 // Test class instantiates the environment and starts it.
 class base_test extends uvm_test;
-	`uvm_component_utils(base_test)
-	function new(string name = "base_test", uvm_component parent=null);
-		super.new(name, parent);
-	endfunction
-
 	env e0;
 	bit[`LENGTH-1:0] pattern = 4'b1011;
 	gen_item_seq seq;
 	virtual des_if vif;
 
-	virtual function void build_phase(uvm_phase phase);
+	`uvm_component_utils(base_test)
+
+	function new(string name = "base_test", uvm_component parent=null);
+		super.new(name, parent);
+	endfunction
+
+	function void build_phase(uvm_phase phase);
 		super.build_phase(phase);
 
 		// Create the environment
@@ -18,12 +19,12 @@ class base_test extends uvm_test;
 
 		// Get virtual IF handle from top level and pass it to everything
 		// in env level
-		if (!uvm_config_db#(virtual des_if)::get(this, "", "des_vif", vif))
+		if (!uvm_config_db #(virtual des_if)::get(this, "", "des_vif", vif))
 			`uvm_fatal("TEST", "Did not get vif")
-		uvm_config_db#(virtual des_if)::set(this, "e0.a0.*", "des_vif", vif);
+		uvm_config_db #(virtual des_if)::set(this, "e0.a0.*", "des_vif", vif);
 
 		// Setup pattern queue and place into config db
-		uvm_config_db#(bit[`LENGTH-1:0])::set(this, "*", "ref_pattern", pattern);
+		uvm_config_db #(bit[`LENGTH-1:0])::set(this, "*", "ref_pattern", pattern);
 
 		// Create sequence and randomize it
 		seq = gen_item_seq::type_id::create("seq");
@@ -49,13 +50,14 @@ endclass
 
 class test_1011 extends base_test;
 	`uvm_component_utils(test_1011)
-	function new(string name="test_1011", uvm_component parent=null);
+
+	function new(string name = "test_1011", uvm_component parent=null);
 		super.new(name, parent);
 	endfunction
 
-	virtual function void build_phase(uvm_phase phase);
-		pattern = 4'b1011;
+	function void build_phase(uvm_phase phase);
 		super.build_phase(phase);
+		pattern = 4'b1011;
 		seq.randomize() with { num inside {[300:500]}; };
 	endfunction
 endclass
